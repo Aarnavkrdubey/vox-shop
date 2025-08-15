@@ -83,18 +83,78 @@ header p {
   gap: 20px;
 }
 .category {
+  position: relative;
   background: rgba(255,255,255,0.08);
   padding: 20px;
   width: 300px;
   border-radius: 15px;
   backdrop-filter: blur(10px);
+  overflow: hidden;
   transition: transform 0.3s;
 }
+
+.category::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    130deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.77) 50%,
+    transparent 100%
+  );
+  transform: translate(-100%, 100%) rotate(25deg);
+  pointer-events: none; /* so it doesn't block hover */
+}
+
+/* Trigger one-time shine on hover */
+.category:hover::before {
+  animation: shine-move 0.9s ease forwards;
+}
+
+@keyframes shine-move {
+  0% {
+    transform: translate(-100%, 100%) rotate(25deg);
+  }
+  100% {
+    transform: translate(100%, -100%) rotate(25deg);
+  }
+}
+
+/* Slight zoom on hover */
 .category:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(231, 231, 231, 0.95);
 }
-.category h2 { margin-bottom: 10px; color: #ffa7f2ff; }
+
+
+/* Default text styles */
+.category h2 {
+  margin-bottom: 10px;
+  color: #ffa7f2ff;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.category p {
+  color: #ccc;
+  font-size: 0.95em;
+  opacity: 0.8;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* When hovered */
+.category:hover h2 {
+  transform: translateY(-5px);
+  text-shadow: 0 0 10px #ff63e0, 0 0 20px #ff63e0;
+}
+
+.category:hover p {
+  transform: translateY(-3px);
+  opacity: 1;
+}
 
 .steps {
     display: flex;
