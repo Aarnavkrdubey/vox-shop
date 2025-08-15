@@ -1,0 +1,156 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: black;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+#starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  background: black;
+}
+
+/* Main site styles (keep as in your last valid version) */
+header {
+  text-align: center;
+  padding: 80px 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+header h1 {
+  font-size: 3em;
+  font-family: "Michroma", sans-serif;
+  font-weight: 400;
+  background: linear-gradient(90deg, #ffffffff, #17acfcff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s infinite alternate;
+}
+header p {
+  font-size: 1.2em;
+  max-width: 600px;
+  margin: auto;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #7c7c7cff; }
+  to { text-shadow: 0 0 20px #414141ff; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-30px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* Product categories, stats, reviews, etc. — style as before */
+.section { 
+    padding: 50px 20px; text-align: center;
+}
+.howto{
+    font-family: "Press Start 2P", system-ui;
+}
+.cat{
+    font-family: "Bungee", sans-serif;
+}
+.teext{
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-size: 12px;
+}
+.Payy {
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.details{
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.category {
+  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  width: 300px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s;
+}
+.category:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(231, 231, 231, 0.95);
+}
+.category h2 { margin-bottom: 10px; color: #ffa7f2ff; }
+
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+.step {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 220px;
+    transition: transform 0.3s;
+}
+.step:hover { transform: translateY(-5px); }
+.step h3 { color: #00ffea; }
+
+/* Stats */
+.stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.stat { 
+    font-size: 2em; color: #00ff88; 
+    font-family: "Bitcount Grid Single", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0,
+        "CRSV" 0.5,
+        "ELSH" 0,
+        "ELXP" 0;
+}
+
+/* Reviews */
+.reviews { max-width: 600px; margin: auto; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px;}
+.review { display: none; animation: fadeIn 1s;}
+.review.active { display: block; }
+
+footer { 
+  text-align: center; 
+  padding: 20px; 
+  font-size: 0.9em; 
+  opacity: 0.2; 
+  font-family: "Rowdies", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.category h2 {
+  background: linear-gradient(90deg, #ff00ddff, #ffffff, #ff00ddff);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientSideways 4s linear infinite;
+}
+
+@keyframes gradientSideways {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
