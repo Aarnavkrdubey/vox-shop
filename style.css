@@ -356,3 +356,151 @@ body { opacity: 0; transition: opacity 1s; }
 .fade-in {
   animation: fadeInCard 0.5s ease forwards;
 }
+.pixel-socket-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 60px 0 60px 0;
+}
+
+.pixel-btn-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+  outline: none;
+}
+
+/* The SOKET: bigger and less prominent (no glow) */
+.pixel-btn-wrap::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 230px;
+  height: 58px;
+  background: linear-gradient(180deg, #e0e6e0 0%, #bcc2bc 40%, #8e958a 70%, #505050 100%);
+  border-radius: 10px;
+  transform: translate(-50%, 10px);
+  box-shadow:
+    0 4px 12px 2px #46494265;
+  z-index: 0;
+  transition: box-shadow 0.25s, background 0.22s;
+}
+
+.pixel-btn-label {
+  display: block;
+  min-width: 206px;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace, 'Poppins', monospace, sans-serif;
+  font-size: 1.17em;
+  letter-spacing: 2px;
+  padding: 20px 0 15px 0;
+  background: linear-gradient(180deg, #98ff91 3%, #58ca48 100%);
+  color: #244b14;
+  border: 3.2px solid #284030;
+  border-bottom: 7px solid #44803a;
+  border-radius: 7px;
+  position: relative;
+  box-shadow:
+    0 3px 0 #e1f9cc,
+    0 6px 0 #59b548,
+    0 10px 0 #346e38,
+    0 0 0 4px #344a38,
+    0 0 0 12px #152215;
+  image-rendering: pixelated;
+  cursor: pointer;
+  text-shadow: 1px 1px 0 #07612bff, 0 0 8px #dafeff77;
+  transition:
+    box-shadow 0.13s cubic-bezier(.64,2.2,.31,1),
+    background 0.14s cubic-bezier(.67,2.2,.29,1),
+    color 0.13s,
+    border-bottom 0.13s,
+    filter 0.16s,
+    transform 0.14s cubic-bezier(.51,1.8,.42,1.7);
+  z-index: 2;
+  overflow: hidden; /* Ensures shine doesn't overflow */
+}
+
+/* SHINE - angled highlight sweep (always animating) */
+.pixel-btn-shine {
+  pointer-events: none;
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  border-radius: 7px;
+  /* More visible: stronger white, slightly wider streak */
+  background: linear-gradient(
+    110deg,
+    transparent 62%,
+    rgba(255,255,255,0.83) 68%,
+    rgba(255,255,255,0.67) 72%,
+    transparent 77%
+  );
+  opacity: 0.65;
+  mix-blend-mode: lighten;
+  z-index: 3;
+  animation: pixel-shine-move 1.9s infinite linear;
+}
+@keyframes pixel-shine-move {
+  0%   { transform: translateX(-74%) translateY(19%) skewX(-14deg);}
+  55%  { opacity: 0.8; }
+  73%  { opacity: 0.44; }
+  100% { transform: translateX(105%) translateY(-30%) skewX(-14deg);}
+}
+
+/* Slight pixel-arty gloss highlight for realism */
+.pixel-btn-label::after {
+  content: "";
+  position: absolute;
+  left: 13px;
+  right: 12px;
+  top: 7px;
+  height: 14px;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(180deg, #fff 80%, transparent 100%);
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+/* HOVER: slightly pressed, slightly darker green */
+.pixel-btn-wrap:hover .pixel-btn-label,
+.pixel-btn-label:hover, 
+.pixel-btn-label:focus {
+  background: linear-gradient(180deg, #7edd73 6%, #379e29 98%);
+  color: #142b0c;
+  box-shadow:
+    0 1.8px 0 #b7d5aa,
+    0 5px 0 #377130,
+    0 7px 0 #214a22,
+    0 0 0 4px #344a38,
+    0 0 0 12px #152215;
+  border-bottom: 5.2px solid #377132;
+  filter: brightness(0.98) saturate(1.03);
+  transform: translateY(5px) scale(0.98);
+}
+
+/* PRESSED: deeply pressed, strong dark green glow ON the button */
+.pixel-btn-wrap:active .pixel-btn-label,
+.pixel-btn-label:active {
+  background: linear-gradient(180deg, #387927 8%, #185611 99%);
+  color: #101f0b;
+  border-bottom: 2px solid #193e12;
+  box-shadow:
+    0 0 0 #e1f9cc,
+    0 2px 0 #173a16,
+    0 3px 0 #1a4416,
+    0 0 0 6px #193e14,
+    0 0 38px 1px #082112bb,
+    0 0 12px 4px #004a1e,
+    0 0 29px 5px #03ff2faa; /* ON-TOP GLOW ONLY */
+  filter: brightness(0.97) saturate(0.98) drop-shadow(0 0 13px #0d3b0e);
+  transform: translateY(13px) scale(0.95);
+}
+
+/* Make sure the socket looks stable even on press */
+.pixel-btn-wrap:active::before {
+  box-shadow: 0 1px 5px 2px #474d4265;
+  background: linear-gradient(180deg, #d1d6cc 0%, #9ea59b 55%, #323338 100%);
+}
